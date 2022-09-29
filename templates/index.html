@@ -1,0 +1,42 @@
+{% extends 'layouts.html' %} {% block title %} Inicio {{ super() }} {% endblock
+title %} {% block content %}
+
+<center><h1>Ultimas Emergencias</h1></center>
+
+<table class="responsive-table centered">
+ 
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Dirección</th>
+      <th>Fecha/Hora</th>
+      <th>Descripción</th>
+      <th>Estado</th>
+      <th>Opcion</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    {% for emer in emergencias %}
+    <tr>
+      <td>{{emer.1}}</td>
+      <td>{{emer.2}}</td>
+      <td>{{emer.3}}</td>
+      <td>{{emer.4}}</td>
+      
+
+      {% if emer.5 == 1 %}
+      <td>Activa</td>
+      {% else %}
+      <td>Inactiva</td>
+      {% endif %}
+      <td><a href="{{url_for('editar_emergencia', emergencia_id=emer.0)}}" class="waves-effect waves-light btn-small">Editar</a></td>
+    </tr>
+    
+    {% endfor %}
+  </tbody>
+  
+</table>
+
+{% endblock content %}

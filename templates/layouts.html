@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <title>{% block title %}| Central Bomberos Web {% endblock title %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/materialize.min.css')}}"
+      type="text/css"
+    />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="{{ url_for('index') }}" class="brand-logo"
+          ><i class="material-icons">add_alert</i>CBW</a
+        >
+        <a
+          href="{{ url_for('index') }}"
+          data-target="mobile-demo"
+          class="sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{{ url_for('crear_emergencia') }}">Emergencia</a></li>
+          <a class="waves-effect waves-light btn"
+            ><i class="material-icons left">content_paste</i>Generar parte</a
+          >
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="{{ url_for('crear_emergencia') }}">Emergencia</a></li>
+      <a class="waves-effect waves-light btn"
+        ><i class="material-icons left">content_paste</i>Generar parte</a
+      >
+    </ul>
+
+    {% block content %} {% endblock content %}
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/materialize.min.js')}}"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/navbar.js')}}"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/select.js')}}"
+    ></script>
+  </body>
+</html>
